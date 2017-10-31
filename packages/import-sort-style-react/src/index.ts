@@ -1,8 +1,10 @@
-import {IStyleAPI, IStyleItem, IMatcherFunction} from "import-sort-style";
+import {IStyleAPI, IStyleItem, IMatcherFunction, IComparatorFunction} from "import-sort-style";
+
+const fixedOrder = ["react", "prop-types"];
 
 const isReactModule: IMatcherFunction = (module) => Boolean(module.moduleName.match(/^(react|prop-types|redux)/));
 
-export default function (styleApi: IStyleAPI): Array<IStyleItem> {
+export default function(styleApi: IStyleAPI): Array<IStyleItem> {
     const {
         alias,
         and,
@@ -16,6 +18,13 @@ export default function (styleApi: IStyleAPI): Array<IStyleItem> {
         unicode,
     } = styleApi;
 
+    const reactComparator: IComparatorFunction = (name1, name2) => {
+        const i1 = fixedOrder.indexOf(name1);
+        const i2 = fixedOrder.indexOf(name2);
+
+        return i1 > i2 ? 1 : naturally(name1, name2);
+    };
+
     return [
         // import "foo"
         {match: and(hasNoMember, isAbsoluteModule)},
@@ -26,7 +35,7 @@ export default function (styleApi: IStyleAPI): Array<IStyleItem> {
         {separator: true},
 
         // import React from "react";
-        {match: isReactModule, sort: moduleName(naturally), sortNamedMembers: alias(unicode)},
+        {match: isReactModule, sort: moduleName(reactComparator), sortNamedMembers: alias(unicode)},
         {separator: true},
 
         // import … from "fs";
