@@ -19,10 +19,13 @@ export default function(styleApi: IStyleAPI): Array<IStyleItem> {
     } = styleApi;
 
     const reactComparator: IComparatorFunction = (name1, name2) => {
-        const i1 = fixedOrder.indexOf(name1);
-        const i2 = fixedOrder.indexOf(name2);
+        let i1 = fixedOrder.indexOf(name1);
+        let i2 = fixedOrder.indexOf(name2);
 
-        return i1 > i2 ? 1 : naturally(name1, name2);
+        i1 = i1 === -1 ? Number.MAX_SAFE_INTEGER : i1;
+        i2 = i2 === -1 ? Number.MAX_SAFE_INTEGER : i2;
+
+        return i1 === i2 ? naturally(name1, name2) : i1 - i2;
     };
 
     return [
