@@ -1,0 +1,31 @@
+{
+  "name": "import-sort-style-react",
+  "version": "0.1.0",
+  "description": "An import-sort style that groups and sorts by module respecting React modules",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "prepublish": "npm run build",
+    "build": "tsc -p src",
+    "watch:build": "tsc -p src -w",
+    "test": "mocha --compilers ts:ts-node/register,tsx:ts-node/register --recursive test",
+    "watch:test": "mocha -w --compilers ts:ts-node/register,tsx:ts-node/register --recursive test"
+  },
+  "author": "Michael Manukyan <hi@mmanukyan.io> (https://github.com/mike1808)",
+  "repository": "import-sort-style-react",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/chai": "^4.0.0",
+    "@types/mocha": "^2.2.41",
+    "@types/node": "^7.0.31",
+    "chai": "^4.0.2",
+    "import-sort-style": "^3.0.0",
+    "mocha": "^3.4.2",
+    "ts-node": "^3.0.6",
+    "tslint": "^5.4.3",
+    "typescript": "^2.3.4"
+  },
+  "dependencies": {
+    "import-sort-parser": "^3.0.0"
+  }
+}
