@@ -12,7 +12,7 @@
     "watch:test": "mocha -w --compilers ts:ts-node/register,tsx:ts-node/register --recursive test"
   },
   "author": "Michael Manukyan <hi@mmanukyan.io> (https://github.com/mike1808)",
-  "license": "ISC",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/mike1808/import-sort-style-react.git"
