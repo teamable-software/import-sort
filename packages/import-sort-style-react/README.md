@@ -15,8 +15,9 @@ import "./c";
 import "./b";
 
 // Modules from the React eco-system (react, prop-types, redux modules) library sorted by name
-import {readFile, writeFile} from "fs";
-import * as path from "path";
+import React from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
 // Modules from the Node.js "standard" library sorted by name
 import {readFile, writeFile} from "fs";
@@ -34,4 +35,7 @@ import aaaa from "../aaaa";
 import bbbb from "../bbbb";
 import aaaaa from "./aaaaa";
 import bbbbb from "./bbbbb";
+
+// First-party styles modules sorted by "relative depth" and then by name
+import styles from "./Component.scss";
 ```

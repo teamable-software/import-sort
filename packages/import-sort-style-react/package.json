@@ -12,8 +12,15 @@
     "watch:test": "mocha -w --compilers ts:ts-node/register,tsx:ts-node/register --recursive test"
   },
   "author": "Michael Manukyan <hi@mmanukyan.io> (https://github.com/mike1808)",
-  "repository": "import-sort-style-react",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/mike1808/import-sort-style-react.git"
+  },
+  "homepage": "https://github.com/mike1808/import-sort-style-react#readme",
+  "bugs": {
+    "url": "https://github.com/mike1808/import-sort-style-react/issues"
+  },
   "devDependencies": {
     "@types/chai": "^4.0.0",
     "@types/mocha": "^2.2.41",
