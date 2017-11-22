@@ -1,13 +1,13 @@
 import {IStyleAPI, IStyleItem, IMatcherFunction, IComparatorFunction} from "import-sort-style";
+import {readdirSync} from "fs";
 
 const fixedOrder = ["react", "prop-types"];
-
-const isReactModule: IMatcherFunction = (module) => Boolean(module.moduleName.match(/^(react|prop-types|redux)/));
 
 export default function(styleApi: IStyleAPI): Array<IStyleItem> {
     const {
         alias,
         and,
+        not,
         dotSegmentCount,
         hasNoMember,
         isAbsoluteModule,
@@ -17,6 +17,13 @@ export default function(styleApi: IStyleAPI): Array<IStyleItem> {
         naturally,
         unicode,
     } = styleApi;
+
+    const modules = readdirSync("./node_modules");
+
+    const isFromNodeModules: IMatcherFunction = (imported) => modules.indexOf(imported.moduleName.split("/")[0]) !== -1;
+    const isReactModule: IMatcherFunction = (imported) =>
+        Boolean(imported.moduleName.match(/^(react|prop-types|redux)/));
+    const isStylesModule: IMatcherFunction = (imported) => Boolean(imported.moduleName.match(/\.s?css$/));
 
     const reactComparator: IComparatorFunction = (name1, name2) => {
         let i1 = fixedOrder.indexOf(name1);
@@ -45,13 +52,26 @@ export default function(styleApi: IStyleAPI): Array<IStyleItem> {
         {match: isNodeModule, sort: moduleName(naturally), sortNamedMembers: alias(unicode)},
         {separator: true},
 
-        // import … from "foo";
+        // import uniq from 'lodash/uniq';
+        {match: isFromNodeModules, sort: moduleName(naturally), sortNamedMembers: alias(unicode)},
+        {separator: true},
+
+        // import Component from "components/Component.jsx";
         {match: isAbsoluteModule, sort: moduleName(naturally), sortNamedMembers: alias(unicode)},
         {separator: true},
 
         // import … from "./foo";
         // import … from "../foo";
-        {match: isRelativeModule, sort: [dotSegmentCount, moduleName(naturally)], sortNamedMembers: alias(unicode)},
+        {
+            match: and(isRelativeModule, not(isStylesModule)),
+            sort: [dotSegmentCount, moduleName(naturally)],
+            sortNamedMembers: alias(unicode)
+        },
+        {separator: true},
+
+        // import styles from "./Components.scss";
+        {match: isStylesModule, sort: [dotSegmentCount, moduleName(naturally)], sortNamedMembers: alias(unicode)},
+        {separator: true},
         {separator: true},
     ];
 }
