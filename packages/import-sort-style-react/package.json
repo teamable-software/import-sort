@@ -11,15 +11,15 @@
     "test": "mocha --compilers ts:ts-node/register,tsx:ts-node/register --recursive test",
     "watch:test": "mocha -w --compilers ts:ts-node/register,tsx:ts-node/register --recursive test"
   },
-  "author": "Michael Manukyan <hi@mmanukyan.io> (https://github.com/mike1808)",
+  "author": "Michael Manukyan <michael@teamable.com> (https://github.com/mike1808)",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/mike1808/import-sort-style-react.git"
+    "url": "git+ssh://git@github.com/teamable-software/import-sort-style-react.git"
   },
-  "homepage": "https://github.com/mike1808/import-sort-style-react#readme",
+  "homepage": "https://github.com/teamable-software/import-sort-style-react#readme",
   "bugs": {
-    "url": "https://github.com/mike1808/import-sort-style-react/issues"
+    "url": "https://github.com/teamable-software/import-sort-style-react/issues"
   },
   "devDependencies": {
     "@types/chai": "^4.0.0",
