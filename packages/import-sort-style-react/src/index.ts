@@ -41,7 +41,7 @@ export default function(styleApi: IStyleAPI): Array<IStyleItem> {
         {separator: true},
 
         // import "./foo"
-        {match: and(hasNoMember, isRelativeModule)},
+        {match: and(hasNoMember, isRelativeModule, not(isStylesModule))},
         {separator: true},
 
         // import React from "react";
@@ -69,7 +69,10 @@ export default function(styleApi: IStyleAPI): Array<IStyleItem> {
         },
         {separator: true},
 
-        // import styles from "./Components.scss";
+	// import "./styles.css";
+        {match: and(hasNoMember, isRelativeModule, isStylesModule)},
+
+	// import styles from "./Components.scss";
         {match: isStylesModule, sort: [dotSegmentCount, moduleName(naturally)], sortNamedMembers: alias(unicode)},
         {separator: true},
         {separator: true},
