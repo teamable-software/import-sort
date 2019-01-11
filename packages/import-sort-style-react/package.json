@@ -1,6 +1,6 @@
 {
   "name": "import-sort-style-react",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An import-sort style that groups and sorts by module respecting React modules",
   "main": "lib/index.js",
   "scripts": {
@@ -20,7 +20,5 @@
   },
   "files": [
     "lib"
-  ],
-  "devDependencies": {},
-  "dependencies": {}
+  ]
 }
