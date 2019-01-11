@@ -24,7 +24,7 @@ export default function(styleApi) {
   const isReactModule = imported =>
     Boolean(imported.moduleName.match(/^(react|prop-types|redux)/));
   const isStylesModule = imported =>
-    Boolean(imported.moduleName.match(/\.s?css$/));
+    Boolean(imported.moduleName.match(/\.(s?css|less)$/));
 
   const reactComparator = (name1, name2) => {
     let i1 = fixedOrder.indexOf(name1);
