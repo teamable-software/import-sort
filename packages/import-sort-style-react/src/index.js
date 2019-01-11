@@ -13,8 +13,8 @@ export default function(styleApi) {
     isNodeModule,
     isRelativeModule,
     moduleName,
-    naturally,
     unicode,
+    naturally,
   } = styleApi;
 
   const modules = readdirSync('./node_modules');

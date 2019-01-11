@@ -1,26 +1,30 @@
 {
-  "name": "import-sort-style-react",
+  "name": "import-sort-parser-babylon-ignore",
   "version": "1.0.0",
-  "description": "An import-sort style that groups and sorts by module respecting React modules",
-  "main": "lib/index.js",
-  "scripts": {
-    "format": "prettier --write src/*.js",
-    "build": "babel src --out-dir lib",
-    "build:watch": "babel src --watch --out-dir lib"
-  },
+  "description": "Parser for import-sort based on Babylon with ignore comment",
   "author": "Michael Manukyan <michael@teamable.com> (https://github.com/mike1808)",
   "license": "MIT",
-  "repository": "teamable-software/import-sort",
-  "homepage": "https://github.com/teamable-software/import-sort",
-  "bugs": {
-    "url": "https://github.com/teamable-software/import-sort/issues"
-  },
+  "main": "lib/index.js",
   "directories": {
     "lib": "lib"
   },
   "files": [
     "lib"
   ],
+  "scripts": {
+    "format": "prettier --write src/*.js",
+    "build": "babel src --out-dir lib",
+    "build:watch": "babel src --watch --out-dir lib"
+  },
+  "repository": "teamable-software/import-sort",
+  "homepage": "https://github.com/teamable-software/import-sort",
+  "bugs": {
+    "url": "https://github.com/teamable-software/import-sort/issues"
+  },
   "devDependencies": {},
-  "dependencies": {}
+  "dependencies": {
+    "@babel/parser": "^7.2.3",
+    "@babel/traverse": "^7.2.3",
+    "import-sort-parser-babylon": "^5.2.0"
+  }
 }
