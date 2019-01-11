@@ -1,15 +1,14 @@
 {
   "name": "import-sort-style-react",
-  "version": "0.4.0",
+  "version": "1.0.0",
   "description": "An import-sort style that groups and sorts by module respecting React modules",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
+    "format": "prettier --write src/*.js",
     "prepublish": "npm run build",
-    "build": "tsc -p src",
-    "watch:build": "tsc -p src -w",
-    "test": "mocha --compilers ts:ts-node/register,tsx:ts-node/register --recursive test",
-    "watch:test": "mocha -w --compilers ts:ts-node/register,tsx:ts-node/register --recursive test"
+    "build": "babel src --out-dir lib",
+    "build:watch": "babel src --watch --out-dir lib"
   },
   "author": "Michael Manukyan <michael@teamable.com> (https://github.com/mike1808)",
   "license": "MIT",
@@ -22,16 +21,10 @@
     "url": "https://github.com/teamable-software/import-sort-style-react/issues"
   },
   "devDependencies": {
-    "@types/chai": "^4.0.0",
-    "@types/mocha": "^2.2.41",
-    "@types/node": "^7.0.31",
-    "chai": "^4.0.2",
-    "import-sort-parser": "^3.0.0",
-    "import-sort-style": "^3.0.0",
-    "mocha": "^3.4.2",
-    "ts-node": "^3.0.6",
-    "tslint": "^5.4.3",
-    "typescript": "^2.3.4"
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "prettier": "^1.15.3"
   },
   "dependencies": {}
 }
