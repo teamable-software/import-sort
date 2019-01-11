@@ -1,6 +1,6 @@
 {
   "name": "import-sort-parser-babylon-ignore",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Parser for import-sort based on Babylon with ignore comment",
   "author": "Michael Manukyan <michael@teamable.com> (https://github.com/mike1808)",
   "license": "MIT",
